@@ -1,0 +1,25 @@
+name: Checks
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  formatting:
+    # Name the Job
+    name: Formatting 
+    # Set the type of machine to run on
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Checks out a copy of your repository on the ubuntu-latest machine
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Install LilyPond formatter 
+        run: sudo apt install python3-ly -y
+      
+      - name: Check code formatting
+        run: ly indent wintermute.ly | diff wintermute.ly - 
+ 
