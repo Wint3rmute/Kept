@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+FILENAME="kept.ly"
+FILENAME_NO_EXTENSION=$(echo "$FILENAME" | cut -f 1 -d '.')
+MIDI_FILENAME="$FILENAME_NO_EXTENSION.midi"
+
+show_help() {
+  echo "Autobuild and autoplay script for LilyPond files."
+  echo ""
+  echo "USAGE:"
+  printf "%-15s Only build the notes, don't play anything.\n" "$0"
+  echo ""
+  echo "FLAGS:"
+  echo "-p, --pmidi     Play the generated MIDI file using pmidi."
+  echo "                Recommended if you want to pass MIDI to an external synth."
+  echo "-t, --timidity  Play the generated MIDI file using timidity."
+  echo "-h, --help      Show this message."
+}
+
+case $1 in
+  -h|--help)
+    show_help
+    exit 0
+    ;;
+  -t|--timidity)
+    on_changed="lilypond $FILENAME || exit 1; killall timidity; timidity $MIDI_FILENAME &!"
+    ;;
+  -p|--pmidi)
+    on_changed="lilypond $FILENAME || exit 1; killall pmidi; pmidi -p 128:0 $MIDI_FILENAME &!"
+    ;;
+  "") 
+    on_changed="lilypond $FILENAME"
+    ;;
+  *)
+    echo "Unrecognised command option: $1"
+    echo
+    show_help
+    exit 1
+
+  esac
+
+ls $FILENAME | entr -cr bash -c "$on_changed"
