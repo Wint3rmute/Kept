@@ -21,10 +21,10 @@ jobs:
         run: sudo apt install lilypond -y
       
       - name: Build the sheets
-        run: lilypond wintermute.ly
+        run: lilypond kept.ly
 
       - name: Archive the built sheets PDF
         uses: actions/upload-artifact@v2
         with:
-          name: wintermute-sheets-pdf
-          path: wintermute.pdf
+          name: kept-sheets-pdf
+          path: kept.pdf

@@ -21,5 +21,5 @@ jobs:
         run: sudo apt install python3-ly -y
       
       - name: Check code formatting
-        run: ly indent wintermute.ly | diff wintermute.ly - 
+        run: ly indent kept.ly | diff kept.ly - 
  
