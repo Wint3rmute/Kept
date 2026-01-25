@@ -1,4 +1,4 @@
-\version "2.24.4"
+\version "2.24.3"
 
 \header {
   title = "Kept - Walz Piano"
@@ -16,27 +16,27 @@ upper = \relative c'' {
 
   % \markup \vspace #20
 
-  a2 ^\markup { \italic sechnsucht } c4
+  a2 ^\markup { \italic sehnsucht } c4 |
 
-  f, g f
-  a c4. d8
+  f, g f |
+  a c4. d8 |
 
-  c4 e, f
-  d' f, g
-  c e, f
-  a f d
-  c' d, f4
+  c4 e, f |
+  d' f, g |
+  c e, f |
+  a f d |
+  c' d, f4 |
 
-  a2 bes4
-  a4 f g
-  f a, c
-  f a bes
+  a2 bes4 |
+  a4 f g |
+  f a, c |
+  f a bes |
 
-  a2.
-  g2 r8 f16 (g
-  a2.)
+  a2. |
+  g2 r8 f16 (g |
+  a2.) |
 
-  e4 d' c
+  e4 d' c |
 
 }
 
@@ -46,19 +46,19 @@ lower = \relative c {
   \time 3/4
 
   \repeat unfold 4 {
-    d4 <f a>-\staccato <f a>-\staccato
+    d4 <f a>-. <f a>-.
   }
 
   \repeat unfold 4 {
-      bes, <d f>-\staccato q
+    bes, <d f>-. q
   }
 
   \repeat unfold 4 {
-      f, <a c>-\staccato q
+    f, <a c>-. q
   }
 
   \repeat unfold 4 {
-      a <a cis>-\staccato q
+    a <a cis>-. q
   }
 }
 
@@ -71,4 +71,3 @@ lower = \relative c {
   \layout { }
   \midi { }
 }
-
